@@ -53,9 +53,11 @@ const Auth = () => {
         }
     }
 
-    const googleFailure = () => {
-        alert('Google sign in was unsuccessful. Try again.')
+    const googleFailure = (error) => {
+        console.log(error)
+        console.log('Google sign in was unsuccessful. Try again.')
     }
+    
 
     return (
         <Container component='main' maxWidth='xs'>
@@ -82,7 +84,7 @@ const Auth = () => {
                         {isSignup ? 'Sign up' : 'Sign In'}
                     </Button>
                     <GoogleLogin 
-                        clientId='365028596641-g2adj6sbs03dmekpd5cjsa7s7dqo24ci.apps.googleusercontent.com'
+                        clientId='365028596641-6tpp2madfpn2jmrh1j25nu95snl8rduv.apps.googleusercontent.com'
                         render={(renderProps) => (
                             <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant='contained'>
                                 Google Sign In
@@ -90,7 +92,7 @@ const Auth = () => {
                         )}
                         onSuccess={googleSuccess}
                         onFailure={googleFailure}
-                        cookiePolicy='single_host_origin'
+                        cookiePolicy={'single_host_origin'}
                     />
                     <Grid container justifyContent='flex-end'>
                         <Grid item>

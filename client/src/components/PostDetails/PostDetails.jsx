@@ -17,13 +17,13 @@ const PostDetails = () => {
     
   useEffect(() => {
     dispatch(getPost(id))
-  }, [id, dispatch])
+  }, [id])
 
   useEffect(() => {
     if(post) {
       dispatch(getPostsBySearch({ search: 'none', tags: post?.tags.join(',') }))
     }
-  }, [post, dispatch])
+  }, [post])
 
   if(!post) return null;
 
@@ -46,8 +46,6 @@ const PostDetails = () => {
             <Typography gutterBottom variant="body1" component="p">{post.message}</Typography>
             <Typography variant="h6">Created by: {post.name}</Typography>
             <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
-            <Divider style={{ margin: '20px 0' }} />
-            <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
             <Divider style={{ margin: '20px 0' }} />
             <CommentSection post={post} />
             <Divider style={{ margin: '20px 0' }} />
