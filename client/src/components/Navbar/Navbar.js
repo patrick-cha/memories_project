@@ -3,6 +3,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom'
 import { AppBar, Typography, Avatar, Toolbar, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
+
 import decode from 'jwt-decode';
 import useStyles from './styles';
 import memoriesLogo from '../../images/memories-Logo.png';
@@ -23,6 +24,7 @@ const Navbar = () => {
         setUser(null);
     }
     
+
     useEffect(() => {
         const token = user?.token
 
@@ -33,7 +35,8 @@ const Navbar = () => {
         }
 
         setUser(JSON.parse(localStorage.getItem('profile')))
-    }, [location]);
+        // eslint-disable-next-line
+    }, [location, logout]);
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
